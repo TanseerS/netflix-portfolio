@@ -1,13 +1,46 @@
 import { useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Profile = () => {
-  const { profileId } = useParams();
+  const { profileId } = useParams<{ profileId: string }>();
+
   return (
-    <div className="min-h-screen w-screen bg-black text-white flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold mb-4 capitalize">{profileId}</h1>
-        <p className="text-neutral-400">Screen 3 — to be built next.</p>
-      </div>
+    <div className="min-h-screen bg-black text-white">
+      <Navbar />
+      <main>
+        <section
+          id="hero"
+          className="min-h-screen flex items-center justify-center px-4"
+        >
+          <div className="text-center">
+            <h1 className="text-5xl font-bold capitalize">{profileId}</h1>
+            <p className="text-neutral-400 mt-3">
+              Hero / banner section (placeholder).
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="experience"
+          className="min-h-screen flex items-center justify-center px-4 border-t border-neutral-900"
+        >
+          <h2 className="text-4xl font-bold text-neutral-300">Experience</h2>
+        </section>
+
+        <section
+          id="projects"
+          className="min-h-screen flex items-center justify-center px-4 border-t border-neutral-900"
+        >
+          <h2 className="text-4xl font-bold text-neutral-300">Projects</h2>
+        </section>
+
+        <section
+          id="contact"
+          className="min-h-screen flex items-center justify-center px-4 border-t border-neutral-900"
+        >
+          <h2 className="text-4xl font-bold text-neutral-300">Contact</h2>
+        </section>
+      </main>
     </div>
   );
 };
