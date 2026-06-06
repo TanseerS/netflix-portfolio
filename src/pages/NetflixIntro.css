@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.netflix-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.intro-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.intro-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, #1a0000 0%, #000 70%);
+  opacity: 0;
+  animation: gradientFadeIn 0.6s ease forwards;
+}
+
+@keyframes gradientFadeIn {
+  to { opacity: 1; }
+}
+
+.intro-content.animate {
+  animation: introZoomOut 3s forwards ease-in-out;
+}
+
+@keyframes introZoomOut {
+  0%, 80% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.name-wrapper {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.18em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.word-gap {
+  width: 0.5em;
+  display: inline-block;
+}
+
+.intro-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 10vw, 96px);
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  animation: letterReveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    color: transparent;
+    -webkit-text-stroke: 3px #e50914;
+    text-shadow:
+      0 0 20px #e50914,
+      0 0 60px #e50914,
+      0 0 100px rgba(229, 9, 20, 0.4);
+    transform: scale(1.4);
+    filter: blur(4px);
+  }
+  40% {
+    opacity: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px #e50914;
+    text-shadow:
+      0 0 30px #e50914,
+      0 0 80px #e50914,
+      0 0 120px rgba(229, 9, 20, 0.6);
+    transform: scale(1.05);
+    filter: blur(0px);
+  }
+  70% {
+    color: transparent;
+    -webkit-text-stroke: 2px #e50914;
+    text-shadow:
+      0 0 15px #e50914,
+      0 0 40px rgba(229, 9, 20, 0.5);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    color: #e50914;
+    -webkit-text-stroke: 0 transparent;
+    text-shadow:
+      0 0 8px rgba(229, 9, 20, 0.6),
+      0 0 20px rgba(229, 9, 20, 0.3);
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+.flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #e50914;
+  opacity: 0;
+  z-index: 20;
+  pointer-events: none;
+  animation: flashIn 0.12s ease-out forwards;
+}
+
+@keyframes flashIn {
+  0% { opacity: 0; }
+  40% { opacity: 0.18; }
+  100% { opacity: 0; }
+}
+
+.sound-bar {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 40px;
+  opacity: 0;
+  animation: fadeInBars 0.5s ease 0.2s forwards;
+  z-index: 10;
+}
+
+.bar {
+  width: 4px;
+  background: #e50914;
+  border-radius: 2px;
+  animation: barPulse 0.8s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+@keyframes barPulse {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes fadeInBars {
+  to { opacity: 1; }
+}
+
+.tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: rgba(229, 9, 20, 0.5);
+  margin-top: 16px;
+  opacity: 0;
+  position: relative;
+  z-index: 10;
+  text-transform: uppercase;
+  animation: taglineFadeIn 1s ease forwards;
+}
+
+@keyframes taglineFadeIn {
+  to { opacity: 1; }
+}
+
