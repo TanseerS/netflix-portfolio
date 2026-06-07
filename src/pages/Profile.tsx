@@ -1,8 +1,13 @@
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import RecruiterProfile from './RecruiterProfile';
 
 const Profile = () => {
   const { profileId } = useParams<{ profileId: string }>();
+
+  if (profileId === 'recruiter') {
+    return <RecruiterProfile />;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
