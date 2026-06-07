@@ -1,12 +1,17 @@
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import RecruiterProfile from './RecruiterProfile';
+import DeveloperProfile from './DeveloperProfile';
 
 const Profile = () => {
   const { profileId } = useParams<{ profileId: string }>();
 
   if (profileId === 'recruiter') {
     return <RecruiterProfile />;
+  }
+
+  if (profileId === 'developer') {
+    return <DeveloperProfile />;
   }
 
   return (
